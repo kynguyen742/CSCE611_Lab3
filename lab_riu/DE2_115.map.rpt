@@ -1,0 +1,1678 @@
+Analysis & Synthesis report for DE2_115
+Sun Dec 10 15:22:42 2023
+Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Analysis & Synthesis DSP Block Usage Summary
+  9. User-Specified and Inferred Latches
+ 10. Registers Removed During Synthesis
+ 11. Removed Registers Triggering Further Register Optimizations
+ 12. General Register Statistics
+ 13. Inverted Register Statistics
+ 14. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 15. Parameter Settings for Inferred Entity Instance: cpu:newcpu|alu:alu_cpu|lpm_mult:Mult1
+ 16. Parameter Settings for Inferred Entity Instance: cpu:newcpu|alu:alu_cpu|lpm_mult:Mult0
+ 17. lpm_mult Parameter Settings by Entity Instance
+ 18. Port Connectivity Checks: "cpu:newcpu|alu:alu_cpu"
+ 19. Port Connectivity Checks: "cpu:newcpu"
+ 20. Post-Synthesis Netlist Statistics for Top Partition
+ 21. Elapsed Time Per Partition
+ 22. Analysis & Synthesis Messages
+ 23. Analysis & Synthesis Suppressed Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2018  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details.
+
+
+
++--------------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                         ;
++------------------------------------+-------------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Sun Dec 10 15:22:42 2023           ;
+; Quartus Prime Version              ; 18.1.0 Build 625 09/12/2018 SJ Standard Edition ;
+; Revision Name                      ; DE2_115                                         ;
+; Top-level Entity Name              ; top                                             ;
+; Family                             ; Cyclone IV E                                    ;
+; Total logic elements               ; 2,622                                           ;
+;     Total combinational functions  ; 2,135                                           ;
+;     Dedicated logic registers      ; 705                                             ;
+; Total registers                    ; 705                                             ;
+; Total pins                         ; 108                                             ;
+; Total virtual pins                 ; 0                                               ;
+; Total memory bits                  ; 0                                               ;
+; Embedded Multiplier 9-bit elements ; 16                                              ;
+; Total PLLs                         ; 0                                               ;
++------------------------------------+-------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                              ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                           ; Setting            ; Default Value      ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                           ; EP4CE115F29C7      ;                    ;
+; Top-level entity name                                            ; top                ; DE2_115            ;
+; Family name                                                      ; Cyclone IV E       ; Cyclone V          ;
+; Use smart compilation                                            ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                      ; Off                ; Off                ;
+; Restructure Multiplexers                                         ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                              ; Off                ; Off                ;
+; Preserve fewer node names                                        ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                    ; Enable             ; Enable             ;
+; Verilog Version                                                  ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                     ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                         ; Auto               ; Auto               ;
+; Safe State Machine                                               ; Off                ; Off                ;
+; Extract Verilog State Machines                                   ; On                 ; On                 ;
+; Extract VHDL State Machines                                      ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                       ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                   ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                          ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                        ; On                 ; On                 ;
+; Parallel Synthesis                                               ; On                 ; On                 ;
+; DSP Block Balancing                                              ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                               ; On                 ; On                 ;
+; Power-Up Don't Care                                              ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                     ; Off                ; Off                ;
+; Remove Duplicate Registers                                       ; On                 ; On                 ;
+; Ignore CARRY Buffers                                             ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                           ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                            ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                        ; Off                ; Off                ;
+; Ignore LCELL Buffers                                             ; Off                ; Off                ;
+; Ignore SOFT Buffers                                              ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                   ; Off                ; Off                ;
+; Optimization Technique                                           ; Balanced           ; Balanced           ;
+; Carry Chain Length                                               ; 70                 ; 70                 ;
+; Auto Carry Chains                                                ; On                 ; On                 ;
+; Auto Open-Drain Pins                                             ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                            ; Off                ; Off                ;
+; Auto ROM Replacement                                             ; On                 ; On                 ;
+; Auto RAM Replacement                                             ; On                 ; On                 ;
+; Auto DSP Block Replacement                                       ; On                 ; On                 ;
+; Auto Shift Register Replacement                                  ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                  ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                    ; On                 ; On                 ;
+; Strict RAM Replacement                                           ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                           ; Off                ; Off                ;
+; Auto RAM Block Balancing                                         ; On                 ; On                 ;
+; Auto RAM to Logic Cell Conversion                                ; Off                ; Off                ;
+; Auto Resource Sharing                                            ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                               ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                               ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                    ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing              ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                ; Off                ; Off                ;
+; Timing-Driven Synthesis                                          ; On                 ; On                 ;
+; Report Parameter Settings                                        ; On                 ; On                 ;
+; Report Source Assignments                                        ; On                 ; On                 ;
+; Report Connectivity Checks                                       ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                               ; Off                ; Off                ;
+; Synchronization Register Chain Length                            ; 2                  ; 2                  ;
+; Power Optimization During Synthesis                              ; Normal compilation ; Normal compilation ;
+; HDL message level                                                ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                  ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report         ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report               ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report        ; 100                ; 100                ;
+; Clock MUX Protection                                             ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                      ; Off                ; Off                ;
+; Block Design Naming                                              ; Auto               ; Auto               ;
+; SDC constraint protection                                        ; Off                ; Off                ;
+; Synthesis Effort                                                 ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal     ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                             ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                               ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                      ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                           ; On                 ; On                 ;
++------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 16          ;
+; Maximum allowed            ; 8           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 8           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.1%      ;
+;     Processor 3            ;   0.0%      ;
+;     Processor 4            ;   0.0%      ;
+;     Processor 5            ;   0.0%      ;
+;     Processor 6            ;   0.0%      ;
+;     Processor 7            ;   0.0%      ;
+;     Processor 8            ;   0.0%      ;
++----------------------------+-------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                        ;
++----------------------------------+-----------------+------------------------------------+-------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                          ; File Name with Absolute Path                                                              ; Library ;
++----------------------------------+-----------------+------------------------------------+-------------------------------------------------------------------------------------------+---------+
+; top.sv                           ; yes             ; User SystemVerilog HDL File        ; /acct/kyn/Downloads/for github/CSCE611_Fall2023_riu_kynandlaulusa/lab_riu/top.sv          ;         ;
+; hexdriver.sv                     ; yes             ; User SystemVerilog HDL File        ; /acct/kyn/Downloads/for github/CSCE611_Fall2023_riu_kynandlaulusa/lab_riu/hexdriver.sv    ;         ;
+; ControlUnit.sv                   ; yes             ; User SystemVerilog HDL File        ; /acct/kyn/Downloads/for github/CSCE611_Fall2023_riu_kynandlaulusa/lab_riu/ControlUnit.sv  ;         ;
+; decoder.sv                       ; yes             ; User SystemVerilog HDL File        ; /acct/kyn/Downloads/for github/CSCE611_Fall2023_riu_kynandlaulusa/lab_riu/decoder.sv      ;         ;
+; cpu.sv                           ; yes             ; Auto-Found SystemVerilog HDL File  ; /acct/kyn/Downloads/for github/CSCE611_Fall2023_riu_kynandlaulusa/lab_riu/cpu.sv          ;         ;
+; program.rom                      ; yes             ; Auto-Found Unspecified File        ; /acct/kyn/Downloads/for github/CSCE611_Fall2023_riu_kynandlaulusa/lab_riu/program.rom     ;         ;
+; regfile.sv                       ; yes             ; Auto-Found SystemVerilog HDL File  ; /acct/kyn/Downloads/for github/CSCE611_Fall2023_riu_kynandlaulusa/lab_riu/regfile.sv      ;         ;
+; alu.sv                           ; yes             ; Auto-Found SystemVerilog HDL File  ; /acct/kyn/Downloads/for github/CSCE611_Fall2023_riu_kynandlaulusa/lab_riu/alu.sv          ;         ;
+; lpm_mult.tdf                     ; yes             ; Megafunction                       ; /usr/local/3rdparty/altera/18.1/quartus/libraries/megafunctions/lpm_mult.tdf              ;         ;
+; aglobal181.inc                   ; yes             ; Megafunction                       ; /usr/local/3rdparty/altera/18.1/quartus/libraries/megafunctions/aglobal181.inc            ;         ;
+; lpm_add_sub.inc                  ; yes             ; Megafunction                       ; /usr/local/3rdparty/altera/18.1/quartus/libraries/megafunctions/lpm_add_sub.inc           ;         ;
+; multcore.inc                     ; yes             ; Megafunction                       ; /usr/local/3rdparty/altera/18.1/quartus/libraries/megafunctions/multcore.inc              ;         ;
+; bypassff.inc                     ; yes             ; Megafunction                       ; /usr/local/3rdparty/altera/18.1/quartus/libraries/megafunctions/bypassff.inc              ;         ;
+; altshift.inc                     ; yes             ; Megafunction                       ; /usr/local/3rdparty/altera/18.1/quartus/libraries/megafunctions/altshift.inc              ;         ;
+; db/mult_46t.tdf                  ; yes             ; Auto-Generated Megafunction        ; /acct/kyn/Downloads/for github/CSCE611_Fall2023_riu_kynandlaulusa/lab_riu/db/mult_46t.tdf ;         ;
+; db/mult_7dt.tdf                  ; yes             ; Auto-Generated Megafunction        ; /acct/kyn/Downloads/for github/CSCE611_Fall2023_riu_kynandlaulusa/lab_riu/db/mult_7dt.tdf ;         ;
++----------------------------------+-----------------+------------------------------------+-------------------------------------------------------------------------------------------+---------+
+
+
++--------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                  ;
++---------------------------------------------+----------------+
+; Resource                                    ; Usage          ;
++---------------------------------------------+----------------+
+; Estimated Total logic elements              ; 2,622          ;
+;                                             ;                ;
+; Total combinational functions               ; 2135           ;
+; Logic element usage by number of LUT inputs ;                ;
+;     -- 4 input functions                    ; 1469           ;
+;     -- 3 input functions                    ; 520            ;
+;     -- <=2 input functions                  ; 146            ;
+;                                             ;                ;
+; Logic elements by mode                      ;                ;
+;     -- normal mode                          ; 1811           ;
+;     -- arithmetic mode                      ; 324            ;
+;                                             ;                ;
+; Total registers                             ; 705            ;
+;     -- Dedicated logic registers            ; 705            ;
+;     -- I/O registers                        ; 0              ;
+;                                             ;                ;
+; I/O pins                                    ; 108            ;
+;                                             ;                ;
+; Embedded Multiplier 9-bit elements          ; 16             ;
+;                                             ;                ;
+; Maximum fan-out node                        ; CLOCK_50~input ;
+; Maximum fan-out                             ; 678            ;
+; Total fan-out                               ; 10146          ;
+; Average fan-out                             ; 3.30           ;
++---------------------------------------------+----------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                ;
++---------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+--------------------------------------------------------------------+-------------+--------------+
+; Compilation Hierarchy Node            ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                ; Entity Name ; Library Name ;
++---------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+--------------------------------------------------------------------+-------------+--------------+
+; |top                                  ; 2135 (59)           ; 705 (51)                  ; 0           ; 16           ; 0       ; 8         ; 108  ; 0            ; |top                                                               ; top         ; work         ;
+;    |cpu:newcpu|                       ; 2020 (567)          ; 654 (142)                 ; 0           ; 16           ; 0       ; 8         ; 0    ; 0            ; |top|cpu:newcpu                                                    ; cpu         ; work         ;
+;       |ControlUnit:cu|                ; 64 (64)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|cpu:newcpu|ControlUnit:cu                                     ; ControlUnit ; work         ;
+;       |alu:alu_cpu|                   ; 909 (738)           ; 0 (0)                     ; 0           ; 16           ; 0       ; 8         ; 0    ; 0            ; |top|cpu:newcpu|alu:alu_cpu                                        ; alu         ; work         ;
+;          |lpm_mult:Mult0|             ; 79 (0)              ; 0 (0)                     ; 0           ; 8            ; 0       ; 4         ; 0    ; 0            ; |top|cpu:newcpu|alu:alu_cpu|lpm_mult:Mult0                         ; lpm_mult    ; work         ;
+;             |mult_7dt:auto_generated| ; 79 (79)             ; 0 (0)                     ; 0           ; 8            ; 0       ; 4         ; 0    ; 0            ; |top|cpu:newcpu|alu:alu_cpu|lpm_mult:Mult0|mult_7dt:auto_generated ; mult_7dt    ; work         ;
+;          |lpm_mult:Mult1|             ; 92 (0)              ; 0 (0)                     ; 0           ; 8            ; 0       ; 4         ; 0    ; 0            ; |top|cpu:newcpu|alu:alu_cpu|lpm_mult:Mult1                         ; lpm_mult    ; work         ;
+;             |mult_46t:auto_generated| ; 92 (92)             ; 0 (0)                     ; 0           ; 8            ; 0       ; 4         ; 0    ; 0            ; |top|cpu:newcpu|alu:alu_cpu|lpm_mult:Mult1|mult_46t:auto_generated ; mult_46t    ; work         ;
+;       |regfile:regfile_cpu|           ; 480 (480)           ; 512 (512)                 ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|cpu:newcpu|regfile:regfile_cpu                                ; regfile     ; work         ;
+;    |hexdriver:hex0|                   ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|hexdriver:hex0                                                ; hexdriver   ; work         ;
+;    |hexdriver:hex1|                   ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|hexdriver:hex1                                                ; hexdriver   ; work         ;
+;    |hexdriver:hex2|                   ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|hexdriver:hex2                                                ; hexdriver   ; work         ;
+;    |hexdriver:hex3|                   ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|hexdriver:hex3                                                ; hexdriver   ; work         ;
+;    |hexdriver:hex4|                   ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|hexdriver:hex4                                                ; hexdriver   ; work         ;
+;    |hexdriver:hex5|                   ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|hexdriver:hex5                                                ; hexdriver   ; work         ;
+;    |hexdriver:hex6|                   ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|hexdriver:hex6                                                ; hexdriver   ; work         ;
+;    |hexdriver:hex7|                   ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|hexdriver:hex7                                                ; hexdriver   ; work         ;
++---------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+--------------------------------------------------------------------+-------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++-----------------------------------------------------+
+; Analysis & Synthesis DSP Block Usage Summary        ;
++---------------------------------------+-------------+
+; Statistic                             ; Number Used ;
++---------------------------------------+-------------+
+; Simple Multipliers (9-bit)            ; 0           ;
+; Simple Multipliers (18-bit)           ; 8           ;
+; Embedded Multiplier Blocks            ; --          ;
+; Embedded Multiplier 9-bit elements    ; 16          ;
+; Signed Embedded Multipliers           ; 1           ;
+; Unsigned Embedded Multipliers         ; 5           ;
+; Mixed Sign Embedded Multipliers       ; 2           ;
+; Variable Sign Embedded Multipliers    ; 0           ;
+; Dedicated Input Shift Register Chains ; 0           ;
++---------------------------------------+-------------+
+Note: number of Embedded Multiplier Blocks used is only available after a successful fit.
+
+
++---------------------------------------------------------------------------------------------------+
+; User-Specified and Inferred Latches                                                               ;
++----------------------------------------------------+---------------------+------------------------+
+; Latch Name                                         ; Latch Enable Signal ; Free of Timing Hazards ;
++----------------------------------------------------+---------------------+------------------------+
+; cpu:newcpu|ControlUnit:cu|gpio_we                  ; GND                 ; yes                    ;
+; cpu:newcpu|ControlUnit:cu|regsel[0]                ; GND                 ; yes                    ;
+; cpu:newcpu|ControlUnit:cu|op[0]                    ; GND                 ; yes                    ;
+; cpu:newcpu|ControlUnit:cu|op[1]                    ; GND                 ; yes                    ;
+; cpu:newcpu|ControlUnit:cu|alusrc                   ; GND                 ; yes                    ;
+; cpu:newcpu|ControlUnit:cu|op[2]                    ; GND                 ; yes                    ;
+; cpu:newcpu|ControlUnit:cu|op[3]                    ; GND                 ; yes                    ;
+; cpu:newcpu|ControlUnit:cu|regsel[1]                ; GND                 ; yes                    ;
+; cpu:newcpu|ControlUnit:cu|regwrite                 ; GND                 ; yes                    ;
+; Number of user-specified and inferred latches = 9  ;                     ;                        ;
++----------------------------------------------------+---------------------+------------------------+
+Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
+
+
++------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                       ;
++--------------------------------------------+---------------------------------------------+
+; Register name                              ; Reason for Removal                          ;
++--------------------------------------------+---------------------------------------------+
+; cpu:newcpu|lui_val_WB[0..11]               ; Stuck at GND due to stuck port data_in      ;
+; cpu:newcpu|in_WB[18..31]                   ; Stuck at GND due to stuck port data_in      ;
+; cpu:newcpu|regsel_WB[2]                    ; Stuck at GND due to stuck port data_in      ;
+; cpu:newcpu|instruction_EX[3,11,26]         ; Stuck at GND due to stuck port data_in      ;
+; cpu:newcpu|regdest_WB[4]                   ; Stuck at GND due to stuck port data_in      ;
+; cpu:newcpu|lui_val_WB[26]                  ; Stuck at GND due to stuck port data_in      ;
+; cpu:newcpu|regfile:regfile_cpu|mem[31][3]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[30][3]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[29][3]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[28][3]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[27][3]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[26][3]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[25][3]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[24][3]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[23][3]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[22][3]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[21][3]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[20][3]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[19][3]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[18][3]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[17][3]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[16][3]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[31][2]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[30][2]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[29][2]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[28][2]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[27][2]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[26][2]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[25][2]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[24][2]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[23][2]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[22][2]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[21][2]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[20][2]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[19][2]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[18][2]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[17][2]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[16][2]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[31][1]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[30][1]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[29][1]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[28][1]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[27][1]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[26][1]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[25][1]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[24][1]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[23][1]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[22][1]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[21][1]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[20][1]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[19][1]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[18][1]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[17][1]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[16][1]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[31][0]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[30][0]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[29][0]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[28][0]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[27][0]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[26][0]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[25][0]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[24][0]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[23][0]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[22][0]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[21][0]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[20][0]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[19][0]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[18][0]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[17][0]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[16][0]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[31][7]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[30][7]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[29][7]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[28][7]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[27][7]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[26][7]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[25][7]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[24][7]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[23][7]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[22][7]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[21][7]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[20][7]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[19][7]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[18][7]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[17][7]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[16][7]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[31][6]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[30][6]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[29][6]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[28][6]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[27][6]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[26][6]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[25][6]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[24][6]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[23][6]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[22][6]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[21][6]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[20][6]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[19][6]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[18][6]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[17][6]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[16][6]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[31][5]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[30][5]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[29][5]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[28][5]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[27][5]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[26][5]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[25][5]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[24][5]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[23][5]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[22][5]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[21][5]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[20][5]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[19][5]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[18][5]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[17][5]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[16][5]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[31][4]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[30][4]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[29][4]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[28][4]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[27][4]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[26][4]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[25][4]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[24][4]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[23][4]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[22][4]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[21][4]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[20][4]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[19][4]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[18][4]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[17][4]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[16][4]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[31][11] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[30][11] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[29][11] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[28][11] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[27][11] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[26][11] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[25][11] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[24][11] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[23][11] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[22][11] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[21][11] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[20][11] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[19][11] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[18][11] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[17][11] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[16][11] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[31][10] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[30][10] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[29][10] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[28][10] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[27][10] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[26][10] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[25][10] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[24][10] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[23][10] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[22][10] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[21][10] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[20][10] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[19][10] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[18][10] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[17][10] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[16][10] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[31][9]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[30][9]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[29][9]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[28][9]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[27][9]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[26][9]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[25][9]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[24][9]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[23][9]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[22][9]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[21][9]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[20][9]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[19][9]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[18][9]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[17][9]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[16][9]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[31][8]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[30][8]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[29][8]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[28][8]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[27][8]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[26][8]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[25][8]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[24][8]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[23][8]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[22][8]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[21][8]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[20][8]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[19][8]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[18][8]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[17][8]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[16][8]  ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[31][15] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[30][15] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[29][15] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[28][15] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[27][15] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[26][15] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[25][15] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[24][15] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[23][15] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[22][15] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[21][15] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[20][15] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[19][15] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[18][15] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[17][15] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[16][15] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[31][14] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[30][14] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[29][14] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[28][14] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[27][14] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[26][14] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[25][14] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[24][14] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[23][14] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[22][14] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[21][14] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[20][14] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[19][14] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[18][14] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[17][14] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[16][14] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[31][13] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[30][13] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[29][13] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[28][13] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[27][13] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[26][13] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[25][13] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[24][13] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[23][13] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[22][13] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[21][13] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[20][13] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[19][13] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[18][13] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[17][13] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[16][13] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[31][12] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[30][12] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[29][12] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[28][12] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[27][12] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[26][12] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[25][12] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[24][12] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[23][12] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[22][12] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[21][12] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[20][12] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[19][12] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[18][12] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[17][12] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[16][12] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[31][19] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[30][19] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[29][19] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[28][19] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[27][19] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[26][19] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[25][19] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[24][19] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[23][19] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[22][19] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[21][19] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[20][19] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[19][19] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[18][19] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[17][19] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[16][19] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[31][18] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[30][18] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[29][18] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[28][18] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[27][18] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[26][18] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[25][18] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[24][18] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[23][18] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[22][18] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[21][18] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[20][18] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[19][18] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[18][18] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[17][18] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[16][18] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[31][17] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[30][17] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[29][17] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[28][17] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[27][17] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[26][17] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[25][17] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[24][17] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[23][17] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[22][17] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[21][17] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[20][17] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[19][17] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[18][17] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[17][17] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[16][17] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[31][16] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[30][16] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[29][16] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[28][16] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[27][16] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[26][16] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[25][16] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[24][16] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[23][16] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[22][16] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[21][16] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[20][16] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[19][16] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[18][16] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[17][16] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[16][16] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[31][23] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[30][23] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[29][23] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[28][23] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[27][23] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[26][23] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[25][23] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[24][23] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[23][23] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[22][23] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[21][23] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[20][23] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[19][23] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[18][23] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[17][23] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[16][23] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[31][22] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[30][22] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[29][22] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[28][22] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[27][22] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[26][22] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[25][22] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[24][22] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[23][22] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[22][22] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[21][22] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[20][22] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[19][22] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[18][22] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[17][22] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[16][22] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[31][21] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[30][21] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[29][21] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[28][21] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[27][21] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[26][21] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[25][21] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[24][21] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[23][21] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[22][21] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[21][21] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[20][21] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[19][21] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[18][21] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[17][21] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[16][21] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[31][20] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[30][20] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[29][20] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[28][20] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[27][20] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[26][20] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[25][20] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[24][20] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[23][20] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[22][20] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[21][20] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[20][20] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[19][20] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[18][20] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[17][20] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[16][20] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[31][27] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[30][27] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[29][27] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[28][27] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[27][27] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[26][27] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[25][27] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[24][27] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[23][27] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[22][27] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[21][27] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[20][27] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[19][27] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[18][27] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[17][27] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[16][27] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[31][26] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[30][26] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[29][26] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[28][26] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[27][26] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[26][26] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[25][26] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[24][26] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[23][26] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[22][26] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[21][26] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[20][26] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[19][26] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[18][26] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[17][26] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[16][26] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[31][25] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[30][25] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[29][25] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[28][25] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[27][25] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[26][25] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[25][25] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[24][25] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[23][25] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[22][25] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[21][25] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[20][25] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[19][25] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[18][25] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[17][25] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[16][25] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[31][24] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[30][24] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[29][24] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[28][24] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[27][24] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[26][24] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[25][24] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[24][24] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[23][24] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[22][24] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[21][24] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[20][24] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[19][24] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[18][24] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[17][24] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[16][24] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[31][31] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[30][31] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[29][31] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[28][31] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[27][31] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[26][31] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[25][31] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[24][31] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[23][31] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[22][31] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[21][31] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[20][31] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[19][31] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[18][31] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[17][31] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[16][31] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[31][30] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[30][30] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[29][30] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[28][30] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[27][30] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[26][30] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[25][30] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[24][30] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[23][30] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[22][30] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[21][30] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[20][30] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[19][30] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[18][30] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[17][30] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[16][30] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[31][29] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[30][29] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[29][29] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[28][29] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[27][29] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[26][29] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[25][29] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[24][29] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[23][29] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[22][29] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[21][29] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[20][29] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[19][29] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[18][29] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[17][29] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[16][29] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[31][28] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[30][28] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[29][28] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[28][28] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[27][28] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[26][28] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[25][28] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[24][28] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[23][28] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[22][28] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[21][28] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[20][28] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[19][28] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[18][28] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[17][28] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|regfile:regfile_cpu|mem[16][28] ; Stuck at GND due to stuck port clock_enable ;
+; cpu:newcpu|lui_val_WB[30,31]               ; Merged with cpu:newcpu|lui_val_WB[29]       ;
+; cpu:newcpu|instruction_EX[6,30,31]         ; Merged with cpu:newcpu|instruction_EX[29]   ;
+; cpu:newcpu|instruction_EX[1,4]             ; Merged with cpu:newcpu|instruction_EX[0]    ;
+; Total Number of Removed Registers = 551    ;                                             ;
++--------------------------------------------+---------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                             ;
++-------------------------------+---------------------------+---------------------------------------------+
+; Register name                 ; Reason for Removal        ; Registers Removed due to This Register      ;
++-------------------------------+---------------------------+---------------------------------------------+
+; cpu:newcpu|regsel_WB[2]       ; Stuck at GND              ; cpu:newcpu|regfile:regfile_cpu|mem[31][15], ;
+;                               ; due to stuck port data_in ; cpu:newcpu|regfile:regfile_cpu|mem[30][15], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[29][15], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[28][15], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[27][15], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[26][15], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[25][15], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[24][15], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[23][15], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[22][15], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[21][15], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[20][15], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[19][15], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[18][15], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[17][15], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[16][15], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[31][14], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[30][14], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[29][14], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[28][14], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[27][14], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[26][14], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[25][14], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[24][14], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[23][14], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[22][14], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[21][14], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[20][14], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[19][14], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[18][14], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[17][14], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[16][14], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[31][13], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[30][13], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[29][13], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[28][13], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[27][13], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[26][13], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[25][13], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[24][13], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[23][13], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[22][13], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[21][13], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[20][13], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[19][13], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[18][13], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[17][13], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[16][13], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[31][12], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[30][12], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[29][12], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[28][12], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[27][12], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[26][12], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[25][12], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[24][12], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[23][12], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[22][12], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[21][12], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[20][12], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[19][12], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[18][12], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[17][12], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[16][12], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[31][17], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[30][17], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[29][17], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[28][17], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[27][17], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[26][17], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[25][17], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[24][17], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[23][17], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[22][17], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[21][17], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[20][17], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[19][17], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[18][17], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[17][17], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[16][17], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[31][16], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[30][16], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[29][16], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[28][16], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[27][16], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[26][16], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[25][16], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[24][16], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[23][16], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[22][16], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[21][16], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[20][16], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[19][16], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[18][16], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[17][16], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[16][16]  ;
+; cpu:newcpu|lui_val_WB[1]      ; Stuck at GND              ; cpu:newcpu|regfile:regfile_cpu|mem[31][1],  ;
+;                               ; due to stuck port data_in ; cpu:newcpu|regfile:regfile_cpu|mem[30][1],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[29][1],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[28][1],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[27][1],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[26][1],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[25][1],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[24][1],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[23][1],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[22][1],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[21][1],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[20][1],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[19][1],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[18][1],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[17][1],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[16][1]   ;
+; cpu:newcpu|in_WB[31]          ; Stuck at GND              ; cpu:newcpu|regfile:regfile_cpu|mem[31][31], ;
+;                               ; due to stuck port data_in ; cpu:newcpu|regfile:regfile_cpu|mem[30][31], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[29][31], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[28][31], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[27][31], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[26][31], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[25][31], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[24][31], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[23][31], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[22][31], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[21][31], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[20][31], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[19][31], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[18][31], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[17][31], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[16][31]  ;
+; cpu:newcpu|in_WB[30]          ; Stuck at GND              ; cpu:newcpu|regfile:regfile_cpu|mem[31][30], ;
+;                               ; due to stuck port data_in ; cpu:newcpu|regfile:regfile_cpu|mem[30][30], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[29][30], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[28][30], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[27][30], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[26][30], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[25][30], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[24][30], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[23][30], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[22][30], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[21][30], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[20][30], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[19][30], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[18][30], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[17][30], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[16][30]  ;
+; cpu:newcpu|in_WB[29]          ; Stuck at GND              ; cpu:newcpu|regfile:regfile_cpu|mem[31][29], ;
+;                               ; due to stuck port data_in ; cpu:newcpu|regfile:regfile_cpu|mem[30][29], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[29][29], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[28][29], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[27][29], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[26][29], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[25][29], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[24][29], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[23][29], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[22][29], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[21][29], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[20][29], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[19][29], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[18][29], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[17][29], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[16][29]  ;
+; cpu:newcpu|in_WB[28]          ; Stuck at GND              ; cpu:newcpu|regfile:regfile_cpu|mem[31][28], ;
+;                               ; due to stuck port data_in ; cpu:newcpu|regfile:regfile_cpu|mem[30][28], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[29][28], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[28][28], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[27][28], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[26][28], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[25][28], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[24][28], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[23][28], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[22][28], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[21][28], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[20][28], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[19][28], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[18][28], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[17][28], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[16][28]  ;
+; cpu:newcpu|in_WB[27]          ; Stuck at GND              ; cpu:newcpu|regfile:regfile_cpu|mem[31][27], ;
+;                               ; due to stuck port data_in ; cpu:newcpu|regfile:regfile_cpu|mem[30][27], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[29][27], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[28][27], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[27][27], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[26][27], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[25][27], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[24][27], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[23][27], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[22][27], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[21][27], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[20][27], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[19][27], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[18][27], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[17][27], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[16][27]  ;
+; cpu:newcpu|in_WB[26]          ; Stuck at GND              ; cpu:newcpu|regfile:regfile_cpu|mem[31][26], ;
+;                               ; due to stuck port data_in ; cpu:newcpu|regfile:regfile_cpu|mem[30][26], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[29][26], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[28][26], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[27][26], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[26][26], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[25][26], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[24][26], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[23][26], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[22][26], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[21][26], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[20][26], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[19][26], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[18][26], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[17][26], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[16][26]  ;
+; cpu:newcpu|in_WB[25]          ; Stuck at GND              ; cpu:newcpu|regfile:regfile_cpu|mem[31][25], ;
+;                               ; due to stuck port data_in ; cpu:newcpu|regfile:regfile_cpu|mem[30][25], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[29][25], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[28][25], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[27][25], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[26][25], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[25][25], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[24][25], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[23][25], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[22][25], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[21][25], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[20][25], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[19][25], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[18][25], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[17][25], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[16][25]  ;
+; cpu:newcpu|in_WB[24]          ; Stuck at GND              ; cpu:newcpu|regfile:regfile_cpu|mem[31][24], ;
+;                               ; due to stuck port data_in ; cpu:newcpu|regfile:regfile_cpu|mem[30][24], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[29][24], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[28][24], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[27][24], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[26][24], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[25][24], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[24][24], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[23][24], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[22][24], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[21][24], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[20][24], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[19][24], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[18][24], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[17][24], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[16][24]  ;
+; cpu:newcpu|in_WB[23]          ; Stuck at GND              ; cpu:newcpu|regfile:regfile_cpu|mem[31][23], ;
+;                               ; due to stuck port data_in ; cpu:newcpu|regfile:regfile_cpu|mem[30][23], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[29][23], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[28][23], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[27][23], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[26][23], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[25][23], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[24][23], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[23][23], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[22][23], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[21][23], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[20][23], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[19][23], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[18][23], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[17][23], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[16][23]  ;
+; cpu:newcpu|in_WB[22]          ; Stuck at GND              ; cpu:newcpu|regfile:regfile_cpu|mem[31][22], ;
+;                               ; due to stuck port data_in ; cpu:newcpu|regfile:regfile_cpu|mem[30][22], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[29][22], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[28][22], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[27][22], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[26][22], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[25][22], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[24][22], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[23][22], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[22][22], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[21][22], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[20][22], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[19][22], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[18][22], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[17][22], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[16][22]  ;
+; cpu:newcpu|in_WB[21]          ; Stuck at GND              ; cpu:newcpu|regfile:regfile_cpu|mem[31][21], ;
+;                               ; due to stuck port data_in ; cpu:newcpu|regfile:regfile_cpu|mem[30][21], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[29][21], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[28][21], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[27][21], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[26][21], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[25][21], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[24][21], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[23][21], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[22][21], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[21][21], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[20][21], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[19][21], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[18][21], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[17][21], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[16][21]  ;
+; cpu:newcpu|in_WB[20]          ; Stuck at GND              ; cpu:newcpu|regfile:regfile_cpu|mem[31][20], ;
+;                               ; due to stuck port data_in ; cpu:newcpu|regfile:regfile_cpu|mem[30][20], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[29][20], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[28][20], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[27][20], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[26][20], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[25][20], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[24][20], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[23][20], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[22][20], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[21][20], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[20][20], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[19][20], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[18][20], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[17][20], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[16][20]  ;
+; cpu:newcpu|in_WB[19]          ; Stuck at GND              ; cpu:newcpu|regfile:regfile_cpu|mem[31][19], ;
+;                               ; due to stuck port data_in ; cpu:newcpu|regfile:regfile_cpu|mem[30][19], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[29][19], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[28][19], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[27][19], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[26][19], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[25][19], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[24][19], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[23][19], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[22][19], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[21][19], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[20][19], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[19][19], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[18][19], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[17][19], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[16][19]  ;
+; cpu:newcpu|in_WB[18]          ; Stuck at GND              ; cpu:newcpu|regfile:regfile_cpu|mem[31][18], ;
+;                               ; due to stuck port data_in ; cpu:newcpu|regfile:regfile_cpu|mem[30][18], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[29][18], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[28][18], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[27][18], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[26][18], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[25][18], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[24][18], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[23][18], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[22][18], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[21][18], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[20][18], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[19][18], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[18][18], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[17][18], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[16][18]  ;
+; cpu:newcpu|lui_val_WB[11]     ; Stuck at GND              ; cpu:newcpu|regfile:regfile_cpu|mem[31][11], ;
+;                               ; due to stuck port data_in ; cpu:newcpu|regfile:regfile_cpu|mem[30][11], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[29][11], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[28][11], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[27][11], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[26][11], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[25][11], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[24][11], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[23][11], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[22][11], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[21][11], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[20][11], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[19][11], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[18][11], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[17][11], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[16][11]  ;
+; cpu:newcpu|lui_val_WB[10]     ; Stuck at GND              ; cpu:newcpu|regfile:regfile_cpu|mem[31][10], ;
+;                               ; due to stuck port data_in ; cpu:newcpu|regfile:regfile_cpu|mem[30][10], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[29][10], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[28][10], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[27][10], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[26][10], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[25][10], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[24][10], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[23][10], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[22][10], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[21][10], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[20][10], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[19][10], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[18][10], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[17][10], ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[16][10]  ;
+; cpu:newcpu|lui_val_WB[9]      ; Stuck at GND              ; cpu:newcpu|regfile:regfile_cpu|mem[31][9],  ;
+;                               ; due to stuck port data_in ; cpu:newcpu|regfile:regfile_cpu|mem[30][9],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[29][9],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[28][9],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[27][9],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[26][9],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[25][9],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[24][9],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[23][9],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[22][9],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[21][9],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[20][9],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[19][9],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[18][9],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[17][9],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[16][9]   ;
+; cpu:newcpu|lui_val_WB[8]      ; Stuck at GND              ; cpu:newcpu|regfile:regfile_cpu|mem[31][8],  ;
+;                               ; due to stuck port data_in ; cpu:newcpu|regfile:regfile_cpu|mem[30][8],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[29][8],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[28][8],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[27][8],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[26][8],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[25][8],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[24][8],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[23][8],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[22][8],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[21][8],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[20][8],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[19][8],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[18][8],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[17][8],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[16][8]   ;
+; cpu:newcpu|lui_val_WB[7]      ; Stuck at GND              ; cpu:newcpu|regfile:regfile_cpu|mem[31][7],  ;
+;                               ; due to stuck port data_in ; cpu:newcpu|regfile:regfile_cpu|mem[30][7],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[29][7],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[28][7],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[27][7],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[26][7],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[25][7],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[24][7],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[23][7],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[22][7],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[21][7],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[20][7],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[19][7],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[18][7],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[17][7],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[16][7]   ;
+; cpu:newcpu|lui_val_WB[6]      ; Stuck at GND              ; cpu:newcpu|regfile:regfile_cpu|mem[31][6],  ;
+;                               ; due to stuck port data_in ; cpu:newcpu|regfile:regfile_cpu|mem[30][6],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[29][6],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[28][6],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[27][6],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[26][6],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[25][6],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[24][6],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[23][6],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[22][6],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[21][6],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[20][6],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[19][6],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[18][6],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[17][6],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[16][6]   ;
+; cpu:newcpu|lui_val_WB[5]      ; Stuck at GND              ; cpu:newcpu|regfile:regfile_cpu|mem[31][5],  ;
+;                               ; due to stuck port data_in ; cpu:newcpu|regfile:regfile_cpu|mem[30][5],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[29][5],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[28][5],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[27][5],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[26][5],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[25][5],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[24][5],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[23][5],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[22][5],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[21][5],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[20][5],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[19][5],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[18][5],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[17][5],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[16][5]   ;
+; cpu:newcpu|lui_val_WB[4]      ; Stuck at GND              ; cpu:newcpu|regfile:regfile_cpu|mem[31][4],  ;
+;                               ; due to stuck port data_in ; cpu:newcpu|regfile:regfile_cpu|mem[30][4],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[29][4],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[28][4],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[27][4],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[26][4],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[25][4],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[24][4],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[23][4],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[22][4],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[21][4],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[20][4],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[19][4],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[18][4],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[17][4],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[16][4]   ;
+; cpu:newcpu|lui_val_WB[3]      ; Stuck at GND              ; cpu:newcpu|regfile:regfile_cpu|mem[31][3],  ;
+;                               ; due to stuck port data_in ; cpu:newcpu|regfile:regfile_cpu|mem[30][3],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[29][3],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[28][3],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[27][3],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[26][3],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[25][3],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[24][3],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[23][3],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[22][3],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[21][3],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[20][3],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[19][3],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[18][3],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[17][3],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[16][3]   ;
+; cpu:newcpu|lui_val_WB[2]      ; Stuck at GND              ; cpu:newcpu|regfile:regfile_cpu|mem[31][2],  ;
+;                               ; due to stuck port data_in ; cpu:newcpu|regfile:regfile_cpu|mem[30][2],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[29][2],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[28][2],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[27][2],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[26][2],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[25][2],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[24][2],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[23][2],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[22][2],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[21][2],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[20][2],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[19][2],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[18][2],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[17][2],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[16][2]   ;
+; cpu:newcpu|lui_val_WB[0]      ; Stuck at GND              ; cpu:newcpu|regfile:regfile_cpu|mem[31][0],  ;
+;                               ; due to stuck port data_in ; cpu:newcpu|regfile:regfile_cpu|mem[30][0],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[29][0],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[28][0],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[27][0],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[26][0],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[25][0],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[24][0],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[23][0],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[22][0],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[21][0],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[20][0],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[19][0],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[18][0],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[17][0],  ;
+;                               ;                           ; cpu:newcpu|regfile:regfile_cpu|mem[16][0]   ;
+; cpu:newcpu|instruction_EX[26] ; Stuck at GND              ; cpu:newcpu|lui_val_WB[26]                   ;
+;                               ; due to stuck port data_in ;                                             ;
+; cpu:newcpu|instruction_EX[11] ; Stuck at GND              ; cpu:newcpu|regdest_WB[4]                    ;
+;                               ; due to stuck port data_in ;                                             ;
++-------------------------------+---------------------------+---------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 705   ;
+; Number of registers using Synchronous Clear  ; 38    ;
+; Number of registers using Synchronous Load   ; 6     ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 512   ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++--------------------------------------------------+
+; Inverted Register Statistics                     ;
++----------------------------------------+---------+
+; Inverted Register                      ; Fan out ;
++----------------------------------------+---------+
+; leds[0]                                ; 3       ;
+; Total number of inverted registers = 1 ;         ;
++----------------------------------------+---------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                 ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                       ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------+
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |top|cpu:newcpu|regfile:regfile_cpu|mem[0][20]   ;
+; 16:1               ; 7 bits    ; 70 LEs        ; 70 LEs               ; 0 LEs                  ; Yes        ; |top|cpu:newcpu|R_WB[20]                         ;
+; 15:1               ; 8 bits    ; 80 LEs        ; 72 LEs               ; 8 LEs                  ; Yes        ; |top|cpu:newcpu|R_WB[8]                          ;
+; 16:1               ; 4 bits    ; 40 LEs        ; 40 LEs               ; 0 LEs                  ; Yes        ; |top|cpu:newcpu|R_WB[4]                          ;
+; 17:1               ; 4 bits    ; 44 LEs        ; 40 LEs               ; 4 LEs                  ; Yes        ; |top|cpu:newcpu|R_WB[25]                         ;
+; 17:1               ; 2 bits    ; 22 LEs        ; 20 LEs               ; 2 LEs                  ; Yes        ; |top|cpu:newcpu|R_WB[3]                          ;
+; 18:1               ; 2 bits    ; 24 LEs        ; 22 LEs               ; 2 LEs                  ; Yes        ; |top|cpu:newcpu|R_WB[29]                         ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |top|cpu:newcpu|Selector16                       ;
+; 34:1               ; 32 bits   ; 704 LEs       ; 384 LEs              ; 320 LEs                ; No         ; |top|cpu:newcpu|regfile:regfile_cpu|readdata1[3] ;
+; 35:1               ; 31 bits   ; 713 LEs       ; 403 LEs              ; 310 LEs                ; No         ; |top|cpu:newcpu|B_EX[1]                          ;
+; 57:1               ; 2 bits    ; 76 LEs        ; 72 LEs               ; 4 LEs                  ; No         ; |top|cpu:newcpu|ControlUnit:cu|op[0]             ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: cpu:newcpu|alu:alu_cpu|lpm_mult:Mult1 ;
++------------------------------------------------+--------------+------------------------+
+; Parameter Name                                 ; Value        ; Type                   ;
++------------------------------------------------+--------------+------------------------+
+; AUTO_CARRY_CHAINS                              ; ON           ; AUTO_CARRY             ;
+; IGNORE_CARRY_BUFFERS                           ; OFF          ; IGNORE_CARRY           ;
+; AUTO_CASCADE_CHAINS                            ; ON           ; AUTO_CASCADE           ;
+; IGNORE_CASCADE_BUFFERS                         ; OFF          ; IGNORE_CASCADE         ;
+; LPM_WIDTHA                                     ; 32           ; Untyped                ;
+; LPM_WIDTHB                                     ; 32           ; Untyped                ;
+; LPM_WIDTHP                                     ; 64           ; Untyped                ;
+; LPM_WIDTHR                                     ; 64           ; Untyped                ;
+; LPM_WIDTHS                                     ; 1            ; Untyped                ;
+; LPM_REPRESENTATION                             ; SIGNED       ; Untyped                ;
+; LPM_PIPELINE                                   ; 0            ; Untyped                ;
+; LATENCY                                        ; 0            ; Untyped                ;
+; INPUT_A_IS_CONSTANT                            ; NO           ; Untyped                ;
+; INPUT_B_IS_CONSTANT                            ; NO           ; Untyped                ;
+; USE_EAB                                        ; OFF          ; Untyped                ;
+; MAXIMIZE_SPEED                                 ; 5            ; Untyped                ;
+; DEVICE_FAMILY                                  ; Cyclone IV E ; Untyped                ;
+; CARRY_CHAIN                                    ; MANUAL       ; Untyped                ;
+; APEX20K_TECHNOLOGY_MAPPER                      ; LUT          ; TECH_MAPPER_APEX20K    ;
+; DEDICATED_MULTIPLIER_CIRCUITRY                 ; AUTO         ; Untyped                ;
+; DEDICATED_MULTIPLIER_MIN_INPUT_WIDTH_FOR_AUTO  ; 0            ; Untyped                ;
+; DEDICATED_MULTIPLIER_MIN_OUTPUT_WIDTH_FOR_AUTO ; 0            ; Untyped                ;
+; CBXI_PARAMETER                                 ; mult_46t     ; Untyped                ;
+; INPUT_A_FIXED_VALUE                            ; Bx           ; Untyped                ;
+; INPUT_B_FIXED_VALUE                            ; Bx           ; Untyped                ;
+; USE_AHDL_IMPLEMENTATION                        ; OFF          ; Untyped                ;
++------------------------------------------------+--------------+------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: cpu:newcpu|alu:alu_cpu|lpm_mult:Mult0 ;
++------------------------------------------------+--------------+------------------------+
+; Parameter Name                                 ; Value        ; Type                   ;
++------------------------------------------------+--------------+------------------------+
+; AUTO_CARRY_CHAINS                              ; ON           ; AUTO_CARRY             ;
+; IGNORE_CARRY_BUFFERS                           ; OFF          ; IGNORE_CARRY           ;
+; AUTO_CASCADE_CHAINS                            ; ON           ; AUTO_CASCADE           ;
+; IGNORE_CASCADE_BUFFERS                         ; OFF          ; IGNORE_CASCADE         ;
+; LPM_WIDTHA                                     ; 32           ; Untyped                ;
+; LPM_WIDTHB                                     ; 32           ; Untyped                ;
+; LPM_WIDTHP                                     ; 64           ; Untyped                ;
+; LPM_WIDTHR                                     ; 64           ; Untyped                ;
+; LPM_WIDTHS                                     ; 1            ; Untyped                ;
+; LPM_REPRESENTATION                             ; UNSIGNED     ; Untyped                ;
+; LPM_PIPELINE                                   ; 0            ; Untyped                ;
+; LATENCY                                        ; 0            ; Untyped                ;
+; INPUT_A_IS_CONSTANT                            ; NO           ; Untyped                ;
+; INPUT_B_IS_CONSTANT                            ; NO           ; Untyped                ;
+; USE_EAB                                        ; OFF          ; Untyped                ;
+; MAXIMIZE_SPEED                                 ; 5            ; Untyped                ;
+; DEVICE_FAMILY                                  ; Cyclone IV E ; Untyped                ;
+; CARRY_CHAIN                                    ; MANUAL       ; Untyped                ;
+; APEX20K_TECHNOLOGY_MAPPER                      ; LUT          ; TECH_MAPPER_APEX20K    ;
+; DEDICATED_MULTIPLIER_CIRCUITRY                 ; AUTO         ; Untyped                ;
+; DEDICATED_MULTIPLIER_MIN_INPUT_WIDTH_FOR_AUTO  ; 0            ; Untyped                ;
+; DEDICATED_MULTIPLIER_MIN_OUTPUT_WIDTH_FOR_AUTO ; 0            ; Untyped                ;
+; CBXI_PARAMETER                                 ; mult_7dt     ; Untyped                ;
+; INPUT_A_FIXED_VALUE                            ; Bx           ; Untyped                ;
+; INPUT_B_FIXED_VALUE                            ; Bx           ; Untyped                ;
+; USE_AHDL_IMPLEMENTATION                        ; OFF          ; Untyped                ;
++------------------------------------------------+--------------+------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------+
+; lpm_mult Parameter Settings by Entity Instance                                ;
++---------------------------------------+---------------------------------------+
+; Name                                  ; Value                                 ;
++---------------------------------------+---------------------------------------+
+; Number of entity instances            ; 2                                     ;
+; Entity Instance                       ; cpu:newcpu|alu:alu_cpu|lpm_mult:Mult1 ;
+;     -- LPM_WIDTHA                     ; 32                                    ;
+;     -- LPM_WIDTHB                     ; 32                                    ;
+;     -- LPM_WIDTHP                     ; 64                                    ;
+;     -- LPM_REPRESENTATION             ; SIGNED                                ;
+;     -- INPUT_A_IS_CONSTANT            ; NO                                    ;
+;     -- INPUT_B_IS_CONSTANT            ; NO                                    ;
+;     -- USE_EAB                        ; OFF                                   ;
+;     -- DEDICATED_MULTIPLIER_CIRCUITRY ; AUTO                                  ;
+;     -- INPUT_A_FIXED_VALUE            ; Bx                                    ;
+;     -- INPUT_B_FIXED_VALUE            ; Bx                                    ;
+; Entity Instance                       ; cpu:newcpu|alu:alu_cpu|lpm_mult:Mult0 ;
+;     -- LPM_WIDTHA                     ; 32                                    ;
+;     -- LPM_WIDTHB                     ; 32                                    ;
+;     -- LPM_WIDTHP                     ; 64                                    ;
+;     -- LPM_REPRESENTATION             ; UNSIGNED                              ;
+;     -- INPUT_A_IS_CONSTANT            ; NO                                    ;
+;     -- INPUT_B_IS_CONSTANT            ; NO                                    ;
+;     -- USE_EAB                        ; OFF                                   ;
+;     -- DEDICATED_MULTIPLIER_CIRCUITRY ; AUTO                                  ;
+;     -- INPUT_A_FIXED_VALUE            ; Bx                                    ;
+;     -- INPUT_B_FIXED_VALUE            ; Bx                                    ;
++---------------------------------------+---------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "cpu:newcpu|alu:alu_cpu"                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; zero ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++----------------------------------------------+
+; Port Connectivity Checks: "cpu:newcpu"       ;
++------------+-------+----------+--------------+
+; Port       ; Type  ; Severity ; Details      ;
++------------+-------+----------+--------------+
+; in[31..18] ; Input ; Info     ; Stuck at GND ;
++------------+-------+----------+--------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; boundary_port         ; 108                         ;
+; cycloneiii_ff         ; 705                         ;
+;     ENA               ; 512                         ;
+;     SCLR              ; 34                          ;
+;     SCLR SLD          ; 4                           ;
+;     SLD               ; 2                           ;
+;     plain             ; 153                         ;
+; cycloneiii_lcell_comb ; 2145                        ;
+;     arith             ; 324                         ;
+;         2 data inputs ; 70                          ;
+;         3 data inputs ; 254                         ;
+;     normal            ; 1821                        ;
+;         0 data inputs ; 3                           ;
+;         1 data inputs ; 13                          ;
+;         2 data inputs ; 70                          ;
+;         3 data inputs ; 266                         ;
+;         4 data inputs ; 1469                        ;
+; cycloneiii_mac_mult   ; 8                           ;
+; cycloneiii_mac_out    ; 8                           ;
+;                       ;                             ;
+; Max LUT depth         ; 14.00                       ;
+; Average LUT depth     ; 9.38                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:04     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
+    Info: Processing started: Sun Dec 10 15:22:30 2023
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off DE2_115 -c DE2_115
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 8 of the 8 processors detected
+Info (12021): Found 1 design units, including 1 entities, in source file top.sv
+    Info (12023): Found entity 1: top File: /acct/kyn/Downloads/for github/CSCE611_Fall2023_riu_kynandlaulusa/lab_riu/top.sv Line: 5
+Info (12021): Found 1 design units, including 1 entities, in source file hexdriver.sv
+    Info (12023): Found entity 1: hexdriver File: /acct/kyn/Downloads/for github/CSCE611_Fall2023_riu_kynandlaulusa/lab_riu/hexdriver.sv Line: 1
+Warning (12019): Can't analyze file -- file mycpu.sv is missing
+Info (12021): Found 1 design units, including 1 entities, in source file ControlUnit.sv
+    Info (12023): Found entity 1: ControlUnit File: /acct/kyn/Downloads/for github/CSCE611_Fall2023_riu_kynandlaulusa/lab_riu/ControlUnit.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file decoder.sv
+    Info (12023): Found entity 1: decoder File: /acct/kyn/Downloads/for github/CSCE611_Fall2023_riu_kynandlaulusa/lab_riu/decoder.sv Line: 1
+Info (12127): Elaborating entity "top" for the top level hierarchy
+Warning (10230): Verilog HDL assignment warning at top.sv(59): truncated value with size 26 to match size of target (24) File: /acct/kyn/Downloads/for github/CSCE611_Fall2023_riu_kynandlaulusa/lab_riu/top.sv Line: 59
+Warning (10230): Verilog HDL assignment warning at top.sv(70): truncated value with size 32 to match size of target (24) File: /acct/kyn/Downloads/for github/CSCE611_Fall2023_riu_kynandlaulusa/lab_riu/top.sv Line: 70
+Warning (12125): Using design file cpu.sv, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
+    Info (12023): Found entity 1: cpu File: /acct/kyn/Downloads/for github/CSCE611_Fall2023_riu_kynandlaulusa/lab_riu/cpu.sv Line: 1
+Info (12128): Elaborating entity "cpu" for hierarchy "cpu:newcpu" File: /acct/kyn/Downloads/for github/CSCE611_Fall2023_riu_kynandlaulusa/lab_riu/top.sv Line: 99
+Warning (10850): Verilog HDL warning at cpu.sv(4): number of words (38) in memory file does not match the number of elements in the address range [0:4095] File: /acct/kyn/Downloads/for github/CSCE611_Fall2023_riu_kynandlaulusa/lab_riu/cpu.sv Line: 4
+Warning (10030): Net "inst_ram.data_a" at cpu.sv(3) has no driver or initial value, using a default initial value '0' File: /acct/kyn/Downloads/for github/CSCE611_Fall2023_riu_kynandlaulusa/lab_riu/cpu.sv Line: 3
+Warning (10030): Net "inst_ram.waddr_a" at cpu.sv(3) has no driver or initial value, using a default initial value '0' File: /acct/kyn/Downloads/for github/CSCE611_Fall2023_riu_kynandlaulusa/lab_riu/cpu.sv Line: 3
+Warning (10030): Net "inst_ram.we_a" at cpu.sv(3) has no driver or initial value, using a default initial value '0' File: /acct/kyn/Downloads/for github/CSCE611_Fall2023_riu_kynandlaulusa/lab_riu/cpu.sv Line: 3
+Info (12128): Elaborating entity "decoder" for hierarchy "cpu:newcpu|decoder:dc" File: /acct/kyn/Downloads/for github/CSCE611_Fall2023_riu_kynandlaulusa/lab_riu/cpu.sv Line: 78
+Info (12128): Elaborating entity "ControlUnit" for hierarchy "cpu:newcpu|ControlUnit:cu" File: /acct/kyn/Downloads/for github/CSCE611_Fall2023_riu_kynandlaulusa/lab_riu/cpu.sv Line: 82
+Warning (10235): Verilog HDL Always Construct warning at ControlUnit.sv(97): variable "imm12" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /acct/kyn/Downloads/for github/CSCE611_Fall2023_riu_kynandlaulusa/lab_riu/ControlUnit.sv Line: 97
+Warning (10235): Verilog HDL Always Construct warning at ControlUnit.sv(103): variable "imm12" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /acct/kyn/Downloads/for github/CSCE611_Fall2023_riu_kynandlaulusa/lab_riu/ControlUnit.sv Line: 103
+Warning (10235): Verilog HDL Always Construct warning at ControlUnit.sv(135): variable "imm12" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /acct/kyn/Downloads/for github/CSCE611_Fall2023_riu_kynandlaulusa/lab_riu/ControlUnit.sv Line: 135
+Warning (10235): Verilog HDL Always Construct warning at ControlUnit.sv(141): variable "imm12" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /acct/kyn/Downloads/for github/CSCE611_Fall2023_riu_kynandlaulusa/lab_riu/ControlUnit.sv Line: 141
+Warning (10235): Verilog HDL Always Construct warning at ControlUnit.sv(147): variable "imm12" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /acct/kyn/Downloads/for github/CSCE611_Fall2023_riu_kynandlaulusa/lab_riu/ControlUnit.sv Line: 147
+Warning (10240): Verilog HDL Always Construct warning at ControlUnit.sv(17): inferring latch(es) for variable "alusrc", which holds its previous value in one or more paths through the always construct File: /acct/kyn/Downloads/for github/CSCE611_Fall2023_riu_kynandlaulusa/lab_riu/ControlUnit.sv Line: 17
+Warning (10240): Verilog HDL Always Construct warning at ControlUnit.sv(17): inferring latch(es) for variable "regwrite", which holds its previous value in one or more paths through the always construct File: /acct/kyn/Downloads/for github/CSCE611_Fall2023_riu_kynandlaulusa/lab_riu/ControlUnit.sv Line: 17
+Warning (10240): Verilog HDL Always Construct warning at ControlUnit.sv(17): inferring latch(es) for variable "regsel", which holds its previous value in one or more paths through the always construct File: /acct/kyn/Downloads/for github/CSCE611_Fall2023_riu_kynandlaulusa/lab_riu/ControlUnit.sv Line: 17
+Warning (10240): Verilog HDL Always Construct warning at ControlUnit.sv(17): inferring latch(es) for variable "op", which holds its previous value in one or more paths through the always construct File: /acct/kyn/Downloads/for github/CSCE611_Fall2023_riu_kynandlaulusa/lab_riu/ControlUnit.sv Line: 17
+Warning (10240): Verilog HDL Always Construct warning at ControlUnit.sv(17): inferring latch(es) for variable "gpio_we", which holds its previous value in one or more paths through the always construct File: /acct/kyn/Downloads/for github/CSCE611_Fall2023_riu_kynandlaulusa/lab_riu/ControlUnit.sv Line: 17
+Info (10041): Inferred latch for "gpio_we" at ControlUnit.sv(25) File: /acct/kyn/Downloads/for github/CSCE611_Fall2023_riu_kynandlaulusa/lab_riu/ControlUnit.sv Line: 25
+Info (10041): Inferred latch for "op[0]" at ControlUnit.sv(25) File: /acct/kyn/Downloads/for github/CSCE611_Fall2023_riu_kynandlaulusa/lab_riu/ControlUnit.sv Line: 25
+Info (10041): Inferred latch for "op[1]" at ControlUnit.sv(25) File: /acct/kyn/Downloads/for github/CSCE611_Fall2023_riu_kynandlaulusa/lab_riu/ControlUnit.sv Line: 25
+Info (10041): Inferred latch for "op[2]" at ControlUnit.sv(25) File: /acct/kyn/Downloads/for github/CSCE611_Fall2023_riu_kynandlaulusa/lab_riu/ControlUnit.sv Line: 25
+Info (10041): Inferred latch for "op[3]" at ControlUnit.sv(25) File: /acct/kyn/Downloads/for github/CSCE611_Fall2023_riu_kynandlaulusa/lab_riu/ControlUnit.sv Line: 25
+Info (10041): Inferred latch for "regsel[0]" at ControlUnit.sv(25) File: /acct/kyn/Downloads/for github/CSCE611_Fall2023_riu_kynandlaulusa/lab_riu/ControlUnit.sv Line: 25
+Info (10041): Inferred latch for "regsel[1]" at ControlUnit.sv(25) File: /acct/kyn/Downloads/for github/CSCE611_Fall2023_riu_kynandlaulusa/lab_riu/ControlUnit.sv Line: 25
+Info (10041): Inferred latch for "regsel[2]" at ControlUnit.sv(25) File: /acct/kyn/Downloads/for github/CSCE611_Fall2023_riu_kynandlaulusa/lab_riu/ControlUnit.sv Line: 25
+Info (10041): Inferred latch for "regwrite" at ControlUnit.sv(25) File: /acct/kyn/Downloads/for github/CSCE611_Fall2023_riu_kynandlaulusa/lab_riu/ControlUnit.sv Line: 25
+Info (10041): Inferred latch for "alusrc" at ControlUnit.sv(25) File: /acct/kyn/Downloads/for github/CSCE611_Fall2023_riu_kynandlaulusa/lab_riu/ControlUnit.sv Line: 25
+Warning (12125): Using design file regfile.sv, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
+    Info (12023): Found entity 1: regfile File: /acct/kyn/Downloads/for github/CSCE611_Fall2023_riu_kynandlaulusa/lab_riu/regfile.sv Line: 3
+Info (12128): Elaborating entity "regfile" for hierarchy "cpu:newcpu|regfile:regfile_cpu" File: /acct/kyn/Downloads/for github/CSCE611_Fall2023_riu_kynandlaulusa/lab_riu/cpu.sv Line: 86
+Warning (12125): Using design file alu.sv, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
+    Info (12023): Found entity 1: alu File: /acct/kyn/Downloads/for github/CSCE611_Fall2023_riu_kynandlaulusa/lab_riu/alu.sv Line: 7
+Info (12128): Elaborating entity "alu" for hierarchy "cpu:newcpu|alu:alu_cpu" File: /acct/kyn/Downloads/for github/CSCE611_Fall2023_riu_kynandlaulusa/lab_riu/cpu.sv Line: 88
+Warning (10036): Verilog HDL or VHDL warning at alu.sv(15): object "mullu" assigned a value but never read File: /acct/kyn/Downloads/for github/CSCE611_Fall2023_riu_kynandlaulusa/lab_riu/alu.sv Line: 15
+Info (12128): Elaborating entity "hexdriver" for hierarchy "hexdriver:hex0" File: /acct/kyn/Downloads/for github/CSCE611_Fall2023_riu_kynandlaulusa/lab_riu/top.sv Line: 100
+Warning (127007): Memory Initialization File or Hexadecimal (Intel-Format) File "/acct/kyn/Downloads/for github/CSCE611_Fall2023_riu_kynandlaulusa/lab_riu/db/DE2_115.ram0_cpu_1987c.hdl.mif" contains "don't care" values -- overwriting them with 0s
+Info (278001): Inferred 2 megafunctions from design logic
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "cpu:newcpu|alu:alu_cpu|Mult1" File: /acct/kyn/Downloads/for github/CSCE611_Fall2023_riu_kynandlaulusa/lab_riu/alu.sv Line: 22
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "cpu:newcpu|alu:alu_cpu|Mult0" File: /acct/kyn/Downloads/for github/CSCE611_Fall2023_riu_kynandlaulusa/lab_riu/alu.sv Line: 21
+Info (12130): Elaborated megafunction instantiation "cpu:newcpu|alu:alu_cpu|lpm_mult:Mult1" File: /acct/kyn/Downloads/for github/CSCE611_Fall2023_riu_kynandlaulusa/lab_riu/alu.sv Line: 22
+Info (12133): Instantiated megafunction "cpu:newcpu|alu:alu_cpu|lpm_mult:Mult1" with the following parameter: File: /acct/kyn/Downloads/for github/CSCE611_Fall2023_riu_kynandlaulusa/lab_riu/alu.sv Line: 22
+    Info (12134): Parameter "LPM_WIDTHA" = "32"
+    Info (12134): Parameter "LPM_WIDTHB" = "32"
+    Info (12134): Parameter "LPM_WIDTHP" = "64"
+    Info (12134): Parameter "LPM_WIDTHR" = "64"
+    Info (12134): Parameter "LPM_WIDTHS" = "1"
+    Info (12134): Parameter "LPM_REPRESENTATION" = "SIGNED"
+    Info (12134): Parameter "INPUT_A_IS_CONSTANT" = "NO"
+    Info (12134): Parameter "INPUT_B_IS_CONSTANT" = "NO"
+    Info (12134): Parameter "MAXIMIZE_SPEED" = "5"
+Info (12021): Found 1 design units, including 1 entities, in source file db/mult_46t.tdf
+    Info (12023): Found entity 1: mult_46t File: /acct/kyn/Downloads/for github/CSCE611_Fall2023_riu_kynandlaulusa/lab_riu/db/mult_46t.tdf Line: 30
+Info (12130): Elaborated megafunction instantiation "cpu:newcpu|alu:alu_cpu|lpm_mult:Mult0" File: /acct/kyn/Downloads/for github/CSCE611_Fall2023_riu_kynandlaulusa/lab_riu/alu.sv Line: 21
+Info (12133): Instantiated megafunction "cpu:newcpu|alu:alu_cpu|lpm_mult:Mult0" with the following parameter: File: /acct/kyn/Downloads/for github/CSCE611_Fall2023_riu_kynandlaulusa/lab_riu/alu.sv Line: 21
+    Info (12134): Parameter "LPM_WIDTHA" = "32"
+    Info (12134): Parameter "LPM_WIDTHB" = "32"
+    Info (12134): Parameter "LPM_WIDTHP" = "64"
+    Info (12134): Parameter "LPM_WIDTHR" = "64"
+    Info (12134): Parameter "LPM_WIDTHS" = "1"
+    Info (12134): Parameter "LPM_REPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "INPUT_A_IS_CONSTANT" = "NO"
+    Info (12134): Parameter "INPUT_B_IS_CONSTANT" = "NO"
+    Info (12134): Parameter "MAXIMIZE_SPEED" = "5"
+Info (12021): Found 1 design units, including 1 entities, in source file db/mult_7dt.tdf
+    Info (12023): Found entity 1: mult_7dt File: /acct/kyn/Downloads/for github/CSCE611_Fall2023_riu_kynandlaulusa/lab_riu/db/mult_7dt.tdf Line: 30
+Info (13014): Ignored 456 buffer(s)
+    Info (13019): Ignored 456 SOFT buffer(s)
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "LEDG[8]" is stuck at GND File: /acct/kyn/Downloads/for github/CSCE611_Fall2023_riu_kynandlaulusa/lab_riu/top.sv Line: 13
+Info (286030): Timing-Driven Synthesis is running
+Info (144001): Generated suppressed messages file /acct/kyn/Downloads/for github/CSCE611_Fall2023_riu_kynandlaulusa/lab_riu/DE2_115.map.smsg
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Warning (21074): Design contains 5 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "CLOCK2_50" File: /acct/kyn/Downloads/for github/CSCE611_Fall2023_riu_kynandlaulusa/lab_riu/top.sv Line: 9
+    Warning (15610): No output dependent on input pin "CLOCK3_50" File: /acct/kyn/Downloads/for github/CSCE611_Fall2023_riu_kynandlaulusa/lab_riu/top.sv Line: 10
+    Warning (15610): No output dependent on input pin "KEY[1]" File: /acct/kyn/Downloads/for github/CSCE611_Fall2023_riu_kynandlaulusa/lab_riu/top.sv Line: 17
+    Warning (15610): No output dependent on input pin "KEY[2]" File: /acct/kyn/Downloads/for github/CSCE611_Fall2023_riu_kynandlaulusa/lab_riu/top.sv Line: 17
+    Warning (15610): No output dependent on input pin "KEY[3]" File: /acct/kyn/Downloads/for github/CSCE611_Fall2023_riu_kynandlaulusa/lab_riu/top.sv Line: 17
+Info (21057): Implemented 2814 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 25 input pins
+    Info (21059): Implemented 83 output pins
+    Info (21061): Implemented 2690 logic cells
+    Info (21062): Implemented 16 DSP elements
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 31 warnings
+    Info: Peak virtual memory: 1056 megabytes
+    Info: Processing ended: Sun Dec 10 15:22:42 2023
+    Info: Elapsed time: 00:00:12
+    Info: Total CPU time (on all processors): 00:00:20
+
+
++------------------------------------------+
+; Analysis & Synthesis Suppressed Messages ;
++------------------------------------------+
+The suppressed messages can be found in /acct/kyn/Downloads/for github/CSCE611_Fall2023_riu_kynandlaulusa/lab_riu/DE2_115.map.smsg.
+
+
